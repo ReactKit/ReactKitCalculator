@@ -1,0 +1,594 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1F8560441A949F6700103F01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8560431A949F6700103F01 /* AppDelegate.swift */; };
+		1F85604B1A949F6700103F01 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F85604A1A949F6700103F01 /* Images.xcassets */; };
+		1F85604E1A949F6700103F01 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F85604C1A949F6700103F01 /* LaunchScreen.xib */; };
+		1F85638C1A94BF7700103F01 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F85638A1A94BF7700103F01 /* CalculatorViewController.swift */; };
+		1F85638D1A94BF7700103F01 /* CalculatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F85638B1A94BF7700103F01 /* CalculatorViewController.xib */; };
+		1F8563B01A94C05C00103F01 /* ReactKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F85631E1A94BB2800103F01 /* ReactKit.framework */; };
+		1F8563B11A94C05C00103F01 /* ReactKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F85631E1A94BB2800103F01 /* ReactKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1F8563B41A94C08700103F01 /* ReactKitCalculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8560861A94BB1700103F01 /* ReactKitCalculator.framework */; };
+		1F8563B51A94C08700103F01 /* ReactKitCalculator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8560861A94BB1700103F01 /* ReactKitCalculator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1F8563DA1A94C61600103F01 /* SwiftTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F85632A1A94BB2800103F01 /* SwiftTask.framework */; };
+		1F8563DB1A94C61600103F01 /* SwiftTask.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1F85632A1A94BB2800103F01 /* SwiftTask.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1F8560831A94BB1700103F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F8560791A94BB1700103F01 /* ReactKitCalculator.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1F9781931A94984600A7D656;
+			remoteInfo = "ReactKitCalculator-OSX";
+		};
+		1F8560851A94BB1700103F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F8560791A94BB1700103F01 /* ReactKitCalculator.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1F977EC11A94978B00A7D656;
+			remoteInfo = "ReactKitCalculator-iOS";
+		};
+		1F8560871A94BB1700103F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F8560791A94BB1700103F01 /* ReactKitCalculator.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1F9781B11A9498AD00A7D656;
+			remoteInfo = ReactKitCalculatorTests;
+		};
+		1F8563191A94BB2800103F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F8562471A94BB2800103F01 /* ReactKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1FED88F819C1EB120065658B;
+			remoteInfo = "ReactKit-OSX";
+		};
+		1F85631B1A94BB2800103F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F8562471A94BB2800103F01 /* ReactKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1FED890319C1EB120065658B;
+			remoteInfo = "ReactKit-OSXTests";
+		};
+		1F85631D1A94BB2800103F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F8562471A94BB2800103F01 /* ReactKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1FED894119C1EB7D0065658B;
+			remoteInfo = "ReactKit-iOS";
+		};
+		1F85631F1A94BB2800103F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F8562471A94BB2800103F01 /* ReactKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1FED894B19C1EB7D0065658B;
+			remoteInfo = "ReactKit-iOSTests";
+		};
+		1F8563251A94BB2800103F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F8562A81A94BB2800103F01 /* SwiftTask.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1F46DED4199EDF1000F97868;
+			remoteInfo = "SwiftTask-OSX";
+		};
+		1F8563271A94BB2800103F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F8562A81A94BB2800103F01 /* SwiftTask.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1F46DEDF199EDF1000F97868;
+			remoteInfo = "SwiftTask-OSXTests";
+		};
+		1F8563291A94BB2800103F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F8562A81A94BB2800103F01 /* SwiftTask.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 48CD5A0C19AEE3570042B9F1;
+			remoteInfo = "SwiftTask-iOS";
+		};
+		1F85632B1A94BB2800103F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F8562A81A94BB2800103F01 /* SwiftTask.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4822F0D019D00ABF00F5F572;
+			remoteInfo = "SwiftTask-iOSTests";
+		};
+		1F8563B21A94C05C00103F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F8562471A94BB2800103F01 /* ReactKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1FED894019C1EB7D0065658B;
+			remoteInfo = "ReactKit-iOS";
+		};
+		1F8563B61A94C08700103F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F8560791A94BB1700103F01 /* ReactKitCalculator.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F977EC01A94978B00A7D656;
+			remoteInfo = "ReactKitCalculator-iOS";
+		};
+		1F8563DC1A94C61600103F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F8562A81A94BB2800103F01 /* SwiftTask.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 48CD5A0B19AEE3570042B9F1;
+			remoteInfo = "SwiftTask-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1F8563AF1A94C03700103F01 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1F8563DB1A94C61600103F01 /* SwiftTask.framework in Embed Frameworks */,
+				1F8563B51A94C08700103F01 /* ReactKitCalculator.framework in Embed Frameworks */,
+				1F8563B11A94C05C00103F01 /* ReactKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1F85603E1A949F6700103F01 /* ReactKitCalculatorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactKitCalculatorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F8560421A949F6700103F01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F8560431A949F6700103F01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1F85604A1A949F6700103F01 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1F85604D1A949F6700103F01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		1F8560791A94BB1700103F01 /* ReactKitCalculator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactKitCalculator.xcodeproj; path = ../ReactKitCalculator.xcodeproj; sourceTree = "<group>"; };
+		1F8562471A94BB2800103F01 /* ReactKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = ReactKit.xcodeproj; sourceTree = "<group>"; };
+		1F8562A81A94BB2800103F01 /* SwiftTask.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SwiftTask.xcodeproj; sourceTree = "<group>"; };
+		1F85638A1A94BF7700103F01 /* CalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
+		1F85638B1A94BF7700103F01 /* CalculatorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalculatorViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1F85603B1A949F6700103F01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F8563DA1A94C61600103F01 /* SwiftTask.framework in Frameworks */,
+				1F8563B41A94C08700103F01 /* ReactKitCalculator.framework in Frameworks */,
+				1F8563B01A94C05C00103F01 /* ReactKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1F8560351A949F6700103F01 = {
+			isa = PBXGroup;
+			children = (
+				1F8560791A94BB1700103F01 /* ReactKitCalculator.xcodeproj */,
+				1F8560891A94BB2700103F01 /* Checkouts */,
+				1F8560401A949F6700103F01 /* ReactKitCalculatorDemo */,
+				1F85603F1A949F6700103F01 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1F85603F1A949F6700103F01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F85603E1A949F6700103F01 /* ReactKitCalculatorDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1F8560401A949F6700103F01 /* ReactKitCalculatorDemo */ = {
+			isa = PBXGroup;
+			children = (
+				1F8560431A949F6700103F01 /* AppDelegate.swift */,
+				1F85638A1A94BF7700103F01 /* CalculatorViewController.swift */,
+				1F85638B1A94BF7700103F01 /* CalculatorViewController.xib */,
+				1F85604A1A949F6700103F01 /* Images.xcassets */,
+				1F85604C1A949F6700103F01 /* LaunchScreen.xib */,
+				1F8560411A949F6700103F01 /* Supporting Files */,
+			);
+			path = ReactKitCalculatorDemo;
+			sourceTree = "<group>";
+		};
+		1F8560411A949F6700103F01 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1F8560421A949F6700103F01 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1F85607A1A94BB1700103F01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F8560841A94BB1700103F01 /* ReactKitCalculator.framework */,
+				1F8560861A94BB1700103F01 /* ReactKitCalculator.framework */,
+				1F8560881A94BB1700103F01 /* ReactKitCalculatorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1F8560891A94BB2700103F01 /* Checkouts */ = {
+			isa = PBXGroup;
+			children = (
+				1F8561AB1A94BB2700103F01 /* ReactKit */,
+				1F8562541A94BB2800103F01 /* SwiftTask */,
+			);
+			name = Checkouts;
+			path = ../Carthage/Checkouts;
+			sourceTree = "<group>";
+		};
+		1F8561AB1A94BB2700103F01 /* ReactKit */ = {
+			isa = PBXGroup;
+			children = (
+				1F8562471A94BB2800103F01 /* ReactKit.xcodeproj */,
+			);
+			path = ReactKit;
+			sourceTree = "<group>";
+		};
+		1F8562481A94BB2800103F01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F85631A1A94BB2800103F01 /* ReactKit.framework */,
+				1F85631C1A94BB2800103F01 /* ReactKit-OSXTests.xctest */,
+				1F85631E1A94BB2800103F01 /* ReactKit.framework */,
+				1F8563201A94BB2800103F01 /* ReactKit-iOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1F8562541A94BB2800103F01 /* SwiftTask */ = {
+			isa = PBXGroup;
+			children = (
+				1F8562A81A94BB2800103F01 /* SwiftTask.xcodeproj */,
+			);
+			path = SwiftTask;
+			sourceTree = "<group>";
+		};
+		1F8562A91A94BB2800103F01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F8563261A94BB2800103F01 /* SwiftTask.framework */,
+				1F8563281A94BB2800103F01 /* SwiftTask-OSXTests.xctest */,
+				1F85632A1A94BB2800103F01 /* SwiftTask.framework */,
+				1F85632C1A94BB2800103F01 /* SwiftTask-iOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1F85603D1A949F6700103F01 /* ReactKitCalculatorDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F85605D1A949F6700103F01 /* Build configuration list for PBXNativeTarget "ReactKitCalculatorDemo" */;
+			buildPhases = (
+				1F85603A1A949F6700103F01 /* Sources */,
+				1F85603B1A949F6700103F01 /* Frameworks */,
+				1F85603C1A949F6700103F01 /* Resources */,
+				1F8563AF1A94C03700103F01 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F8563B31A94C05C00103F01 /* PBXTargetDependency */,
+				1F8563B71A94C08700103F01 /* PBXTargetDependency */,
+				1F8563DD1A94C61600103F01 /* PBXTargetDependency */,
+			);
+			name = ReactKitCalculatorDemo;
+			productName = ReactKitCalculatorDemo;
+			productReference = 1F85603E1A949F6700103F01 /* ReactKitCalculatorDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1F8560361A949F6700103F01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Yasuhiro Inami";
+				TargetAttributes = {
+					1F85603D1A949F6700103F01 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 1F8560391A949F6700103F01 /* Build configuration list for PBXProject "ReactKitCalculatorDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1F8560351A949F6700103F01;
+			productRefGroup = 1F85603F1A949F6700103F01 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1F8562481A94BB2800103F01 /* Products */;
+					ProjectRef = 1F8562471A94BB2800103F01 /* ReactKit.xcodeproj */;
+				},
+				{
+					ProductGroup = 1F85607A1A94BB1700103F01 /* Products */;
+					ProjectRef = 1F8560791A94BB1700103F01 /* ReactKitCalculator.xcodeproj */;
+				},
+				{
+					ProductGroup = 1F8562A91A94BB2800103F01 /* Products */;
+					ProjectRef = 1F8562A81A94BB2800103F01 /* SwiftTask.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				1F85603D1A949F6700103F01 /* ReactKitCalculatorDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1F8560841A94BB1700103F01 /* ReactKitCalculator.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactKitCalculator.framework;
+			remoteRef = 1F8560831A94BB1700103F01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1F8560861A94BB1700103F01 /* ReactKitCalculator.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactKitCalculator.framework;
+			remoteRef = 1F8560851A94BB1700103F01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1F8560881A94BB1700103F01 /* ReactKitCalculatorTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ReactKitCalculatorTests.xctest;
+			remoteRef = 1F8560871A94BB1700103F01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1F85631A1A94BB2800103F01 /* ReactKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactKit.framework;
+			remoteRef = 1F8563191A94BB2800103F01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1F85631C1A94BB2800103F01 /* ReactKit-OSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ReactKit-OSXTests.xctest";
+			remoteRef = 1F85631B1A94BB2800103F01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1F85631E1A94BB2800103F01 /* ReactKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ReactKit.framework;
+			remoteRef = 1F85631D1A94BB2800103F01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1F8563201A94BB2800103F01 /* ReactKit-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ReactKit-iOSTests.xctest";
+			remoteRef = 1F85631F1A94BB2800103F01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1F8563261A94BB2800103F01 /* SwiftTask.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftTask.framework;
+			remoteRef = 1F8563251A94BB2800103F01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1F8563281A94BB2800103F01 /* SwiftTask-OSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftTask-OSXTests.xctest";
+			remoteRef = 1F8563271A94BB2800103F01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1F85632A1A94BB2800103F01 /* SwiftTask.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftTask.framework;
+			remoteRef = 1F8563291A94BB2800103F01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1F85632C1A94BB2800103F01 /* SwiftTask-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftTask-iOSTests.xctest";
+			remoteRef = 1F85632B1A94BB2800103F01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1F85603C1A949F6700103F01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F85604E1A949F6700103F01 /* LaunchScreen.xib in Resources */,
+				1F85638D1A94BF7700103F01 /* CalculatorViewController.xib in Resources */,
+				1F85604B1A949F6700103F01 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1F85603A1A949F6700103F01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F85638C1A94BF7700103F01 /* CalculatorViewController.swift in Sources */,
+				1F8560441A949F6700103F01 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1F8563B31A94C05C00103F01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ReactKit-iOS";
+			targetProxy = 1F8563B21A94C05C00103F01 /* PBXContainerItemProxy */;
+		};
+		1F8563B71A94C08700103F01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ReactKitCalculator-iOS";
+			targetProxy = 1F8563B61A94C08700103F01 /* PBXContainerItemProxy */;
+		};
+		1F8563DD1A94C61600103F01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SwiftTask-iOS";
+			targetProxy = 1F8563DC1A94C61600103F01 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1F85604C1A949F6700103F01 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F85604D1A949F6700103F01 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1F85605B1A949F6700103F01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1F85605C1A949F6700103F01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1F85605E1A949F6700103F01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = ReactKitCalculatorDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = ReactKitCalculatorDemo;
+			};
+			name = Debug;
+		};
+		1F85605F1A949F6700103F01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = ReactKitCalculatorDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = ReactKitCalculatorDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1F8560391A949F6700103F01 /* Build configuration list for PBXProject "ReactKitCalculatorDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F85605B1A949F6700103F01 /* Debug */,
+				1F85605C1A949F6700103F01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F85605D1A949F6700103F01 /* Build configuration list for PBXNativeTarget "ReactKitCalculatorDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F85605E1A949F6700103F01 /* Debug */,
+				1F85605F1A949F6700103F01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1F8560361A949F6700103F01 /* Project object */;
+}
