@@ -53,16 +53,53 @@ class OutputSpec: QuickSpec
         
         describe("accumulate digits") {
             
-            it("`1 2 3` should accumulate 3-digits") {
+            context("digits") {
                 
-                p.input = "1"
-                expect(p.output!).to(equal("1"))
+                it("`1 2 3` should accumulate 3-digits") {
+                    
+                    p.input = "1"
+                    expect(p.output!).to(equal("1"))
+                    
+                    p.input = "2"
+                    expect(p.output!).to(equal("12"))
+                    
+                    p.input = "3"
+                    expect(p.output!).to(equal("123"))
+                    
+                }
                 
-                p.input = "2"
-                expect(p.output!).to(equal("12"))
+            }
+            
+            context("decimal point") {
                 
-                p.input = "3"
-                expect(p.output!).to(equal("123"))
+                it("`1 . 2 3` should print `1.23`") {
+                    
+                    p.input = "1"
+                    expect(p.output!).to(equal("1"))
+                    
+                    p.input = "."
+                    expect(p.output!).to(equal("1."))   // not "1"
+                    
+                    p.input = "2"
+                    expect(p.output!).to(equal("1.2"))
+                    
+                    p.input = "3"
+                    expect(p.output!).to(equal("1.23"))
+                    
+                }
+                
+                it("`. 2 3` should print `0.23`") {
+                    
+                    p.input = "."
+                    expect(p.output!).to(equal("0."))   // "0" should be prepended
+                    
+                    p.input = "2"
+                    expect(p.output!).to(equal("0.2"))
+                    
+                    p.input = "3"
+                    expect(p.output!).to(equal("0.23"))
+                    
+                }
                 
             }
         }
