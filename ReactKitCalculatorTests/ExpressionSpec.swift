@@ -58,6 +58,59 @@ class ExpressionSpec: QuickSpec
             (p, "expression") <~ calculator.expressionSignal
         }
         
+        describe("accumulate digits") {
+            
+            context("digits") {
+                
+                it("`1 2 3` should print `123`") {
+                    
+                    p.input = "1"
+                    expect(p.expression!).to(equal("1 "))
+                    
+                    p.input = "2"
+                    expect(p.expression!).to(equal("12 "))
+                    
+                    p.input = "3"
+                    expect(p.expression!).to(equal("123 "))
+                    
+                }
+                
+            }
+            
+            context("decimal point") {
+                
+                it("`1 . 2 3` should print `1.23`") {
+                    
+                    p.input = "1"
+                    expect(p.expression!).to(equal("1 "))
+                    
+                    p.input = "."
+                    expect(p.expression!).to(equal("1 "))   // NOTE: outputSignal sends "1."
+                    
+                    p.input = "2"
+                    expect(p.expression!).to(equal("1.2 "))
+                    
+                    p.input = "3"
+                    expect(p.expression!).to(equal("1.23 "))
+                    
+                }
+                
+                it("`. 2 3` should print `0.23`") {
+                    
+                    p.input = "."
+                    expect(p.expression).to(equal("0 "))   // NOTE: outputSignal sends "0."
+                    
+                    p.input = "2"
+                    expect(p.expression!).to(equal("0.2 "))
+                    
+                    p.input = "3"
+                    expect(p.expression!).to(equal("0.23 "))
+                    
+                }
+                
+            }
+        }
+        
         describe(".Equal") {
             
             it("`= =` should print `0 = ` then `0 = `") {
