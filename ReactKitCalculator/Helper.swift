@@ -35,7 +35,18 @@ func _scientificNotation(num: Double) -> ScientificNotation
         }
     }
     
-    let significand = num * pow(10.0, Double(-exponent))
+    var significand = num * pow(10.0, Double(-exponent))
+    
+    //
+    // NOTE:
+    // Due to rounding of floating-point,
+    // accumulating `exponent` might fail at this point (`significand` becomes `10.0`),
+    // so adjust them if needed.
+    //
+    if significand == 10.0 {
+        significand = 1.0
+        exponent++
+    }
     
 //    println("_scientificNotation(\(num)) = \((significand, exponent))")
     return (significand, exponent)
@@ -79,19 +90,7 @@ func _calculatorString(_ num: Double? = nil, raw numString: NSString? = nil, rtr
             string = "\(significand)"
         }
         else {
-            //
-            // NOTE: 
-            // Due to rounding of floating-point,
-            // `NSString(format:)` (via `doubleValue.calculatorString`) is not capable of
-            // printing very long decimal value e.g. `9.999...` as-is 
-            // (expecting "9.999..." but often returns "10"),
-            // even when higher decimal-precision is given.
-            //
             string = _rtrimFloatString(significand.calculatorString)
-            if string == "10" {
-                string = "1"
-                exponent++
-            }
             
             if string.length > SIGNIFICAND_DIGIT + 1 {  // +1 for `.Point`
                 string = string.substringToIndex(SIGNIFICAND_DIGIT + 1)
