@@ -10,8 +10,7 @@ import Foundation
 import ReactKit
 
 let MAX_DIGIT_FOR_NONEXPONENT = 9
-let MIN_EXPONENT = 8
-let DECIMAL_PRECISION = 8
+let MIN_EXPONENT = 9
 let SIGNIFICAND_DIGIT = 7
 let COMMA_SEPARATOR = ","
 
@@ -38,6 +37,7 @@ func _scientificNotation(num: Double) -> ScientificNotation
     
     let significand = num * pow(10.0, Double(-exponent))
     
+//    println("_scientificNotation(\(num)) = \((significand, exponent))")
     return (significand, exponent)
 }
 
@@ -50,9 +50,11 @@ func _scientificNotation(num: Double) -> ScientificNotation
 /// - inf -> "inf"
 /// - NaN -> "nan"
 ///
-func _calculatorString(numString: NSString, rtrims rtrimsSuffixedPointAndZeros: Bool = true) -> String
+func _calculatorString(_ num: Double? = nil, raw numString: NSString? = nil, rtrims rtrimsSuffixedPointAndZeros: Bool = true) -> String
 {
-    let num = numString.doubleValue
+    precondition(num != nil || numString != nil, "Either `num` or `numString` must be non-nil.")
+    
+    let num = num ?? numString!.doubleValue
     
     // return "inf" or "nan" if needed
     if !num.isFinite { return "\(num)" }
@@ -109,6 +111,7 @@ func _calculatorString(numString: NSString, rtrims rtrimsSuffixedPointAndZeros: 
     }
     // add commas for integer-part
     else {
+        let numString = numString ?? NSString(format: "%0.\(MIN_EXPONENT)f", num)
         string = _commaString(numString)
         
         if rtrimsSuffixedPointAndZeros {
@@ -120,10 +123,8 @@ func _calculatorString(numString: NSString, rtrims rtrimsSuffixedPointAndZeros: 
 }
 
 /// e.g. "12345.67000" -> "12,345.67000" (used for number with non-exponent only)
-func _commaString(numString: NSString) -> String
+func _commaString(var string: NSString) -> String
 {
-    var string = numString
-    
     // split by `.Point`
     let splittedStrings = string.componentsSeparatedByString(Calculator.Key.Point.rawValue)
     if let integerString = splittedStrings.first as? String {
@@ -181,8 +182,7 @@ extension Double
 {
     var calculatorString: String
     {
-        let numString = NSString(format: "%0.\(DECIMAL_PRECISION)f", self) // NOTE: `%f` will never print exponent
-        return _calculatorString(numString, rtrims: true)
+        return _calculatorString(self, rtrims: true)
     }
 }
 
