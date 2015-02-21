@@ -607,9 +607,10 @@ func _commaString(numString: NSString) -> String
     if let integerString = splittedStrings.first as? String {
         
         var integerCharacters = Array(integerString)
+        let isNegative = integerString.hasPrefix(Calculator.Key.Minus.rawValue)
         
         // insert commas
-        for var i = countElements(integerCharacters) - 3; i > 0; i -= 3 {
+        for var i = countElements(integerCharacters) - 3; i > (isNegative ? 1 : 0); i -= 3 {
             integerCharacters.insert(Character(COMMA_SEPARATOR), atIndex: i)
         }
         
