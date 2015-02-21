@@ -51,7 +51,7 @@ class OutputSpec: QuickSpec
             (p, "output") <~ calculator.outputSignal
         }
         
-        describe("accumulate digits") {
+        describe("accumulate number") {
             
             context("digits") {
                 
@@ -98,6 +98,33 @@ class OutputSpec: QuickSpec
                     
                     p.input = "3"
                     expect(p.output!).to(equal("0.23"))
+                    
+                }
+                
+            }
+            
+            context("decimal point + zero") {
+                
+                it("`0 . 0` should print `0.0`") {
+                    
+                    p.input = "0"
+                    expect(p.output!).to(equal("0"))
+                    
+                    p.input = "."
+                    expect(p.output!).to(equal("0."))
+                    
+                    p.input = "0"
+                    expect(p.output!).to(equal("0.0"))
+                    
+                }
+                
+                it("`. 0` should print `0.0`") {
+                    
+                    p.input = "."
+                    expect(p.output!).to(equal("0."))   // "0" should be prepended
+                    
+                    p.input = "0"
+                    expect(p.output!).to(equal("0.0"))
                     
                 }
                 
