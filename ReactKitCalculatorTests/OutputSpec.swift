@@ -625,7 +625,6 @@ class OutputSpec: QuickSpec
                 for _ in 0..<7 {
                     p.input = "="
                 }
-                
                 expect(p.output!).to(equal("0.00000001"))
                 
                 p.input = "="
@@ -634,6 +633,26 @@ class OutputSpec: QuickSpec
                 p.input = "*"
                 p.input = "="
                 expect(p.output!).to(equal("1e-18"))
+                
+            }
+            
+            it("`. 0 0 0 0 0 0 0 1 * 0 . 1 = `") {
+                
+                p.input = "."
+                for _ in 0..<7 {
+                    p.input = "0"
+                }
+                p.input = "1"
+                expect(p.output!).to(equal("0.00000001"))
+                
+                p.input = "*"
+                expect(p.output!).to(equal("0.00000001"))
+                
+                p.input = "0"
+                p.input = "."
+                p.input = "1"
+                p.input = "="
+                expect(p.output!).to(equal("1e-9"))
                 
             }
             
