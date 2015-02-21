@@ -615,6 +615,30 @@ class OutputSpec: QuickSpec
             
         }
         
+        describe("underflow") {
+            
+            it("`. 1 * = = = = = = = = * = `") {
+                
+                p.input = "."
+                p.input = "1"
+                p.input = "*"
+                for _ in 0..<7 {
+                    p.input = "="
+                }
+                
+                expect(p.output!).to(equal("0.00000001"))
+                
+                p.input = "="
+                expect(p.output!).to(equal("1e-9"))
+                
+                p.input = "*"
+                p.input = "="
+                expect(p.output!).to(equal("1e-18"))
+                
+            }
+            
+        }
+        
         // TODO: add bracket feature
 //        describe("bracket") {
 //        
