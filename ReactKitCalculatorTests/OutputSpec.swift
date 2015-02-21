@@ -129,6 +129,69 @@ class OutputSpec: QuickSpec
                 }
                 
             }
+            
+            context(".PlusMinus") {
+                
+                it("`±` should print `-0`") {
+                    
+                    p.input = "±"
+                    expect(p.output!).to(equal("-0"))
+                    
+                }
+                
+                it("`1 ±` should print `-1`") {
+                    
+                    p.input = "1"
+                    expect(p.output!).to(equal("1"))
+                    
+                    p.input = "±"
+                    expect(p.output!).to(equal("-1"))
+                    
+                }
+                
+                it("`1 . ±` should print `-1.`") {
+                    
+                    p.input = "1"
+                    expect(p.output!).to(equal("1"))
+                    
+                    p.input = "."
+                    expect(p.output!).to(equal("1."))
+                    
+                    p.input = "±"
+                    expect(p.output!).to(equal("-1."))
+                    
+                }
+                
+                it("`1 . ±` should print `-1.`") {
+                    
+                    p.input = "1"
+                    expect(p.output!).to(equal("1"))
+                    
+                    p.input = "."
+                    expect(p.output!).to(equal("1."))
+                    
+                    p.input = "±"
+                    expect(p.output!).to(equal("-1."))
+                    
+                }
+                
+                it("`1 1 1 ±` should print `-111`") {
+                    
+                    p.input = "1"
+                    expect(p.output!).to(equal("1"))
+                    
+                    p.input = "1"
+                    expect(p.output!).to(equal("11"))
+                    
+                    p.input = "1"
+                    expect(p.output!).to(equal("111"))
+                    
+                    p.input = "±"
+                    expect(p.output!).to(equal("-111"))
+                    
+                }
+                
+            }
         }
         
         describe("simple operation") {
