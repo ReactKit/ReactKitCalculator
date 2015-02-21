@@ -480,7 +480,7 @@ public class Calculator
         
         self.outputSignal =
             numBuildSignal
-                .map { _calculatorString($0!, rtrims: false) }   // output `calculatorString` to show commas & exponent, and also suffixed `.Point`+`.Num0`s if needed
+                .map { _calculatorString(raw: $0!, rtrims: false) }   // output `calculatorString` to show commas & exponent, and also suffixed `.Point`+`.Num0`s if needed
                 .merge(precalculatingSignal)
                 .peek { println("outputSignal ---> \($0)") }
         
