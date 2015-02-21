@@ -480,7 +480,7 @@ public class Calculator
         
         self.outputSignal =
             numBuildSignal
-                .map { $0!.doubleValue.calculatorString + ($0!.hasSuffix(Key.Point.rawValue) ? Key.Point.rawValue : "") }   // output `calculatorString` to show commas & exponent, and also suffixed-`.Point` if needed
+                .map { _calculatorString($0!, rtrims: false) }   // output `calculatorString` to show commas & exponent, and also suffixed `.Point`+`.Num0`s if needed
                 .merge(precalculatingSignal)
                 .peek { println("outputSignal ---> \($0)") }
         
@@ -502,8 +502,19 @@ let DECIMAL_PRECISION = 8
 let SIGNIFICAND_DIGIT = 7
 let COMMA_SEPARATOR = ","
 
-func _calculatorString(num: Double) -> String
+///
+/// add either expontent or readable-commas to numString as follows:
+///
+/// - "123" -> "123" (no change)
+/// - "12345.6700" -> "12,345.67" (rtrims=true) or "12,345.6700" (rtrims=false)
+/// - "123456789" -> "1.234567e+8"
+/// - inf -> "inf"
+/// - NaN -> "nan"
+///
+func _calculatorString(numString: NSString, rtrims rtrimsSuffixedPointAndZeros: Bool = true) -> String
 {
+    let num = numString.doubleValue
+    
     // return "inf" or "nan" if needed
     if !num.isFinite { return "\(num)" }
     
@@ -547,12 +558,12 @@ func _calculatorString(num: Double) -> String
             //
             // NOTE: 
             // Due to rounding of floating-point,
-            // NSString(format:) is not capable of printing very long decimal value
-            // e.g. `9.999...` as-is (expecting "9.999..." but often returns "10"),
+            // `NSString(format:)` (via `doubleValue.calculatorString`) is not capable of
+            // printing very long decimal value e.g. `9.999...` as-is 
+            // (expecting "9.999..." but often returns "10"),
             // even when higher decimal-precision is given.
             //
-            string = NSString(format: "%0.\(DECIMAL_PRECISION)f", significand)
-            string = _rtrimFloatString(string)
+            string = _rtrimFloatString(significand.calculatorString)
             if string == "10" {
                 string = "1"
                 exponent++
@@ -576,47 +587,56 @@ func _calculatorString(num: Double) -> String
     }
     // add commas for integer-part
     else {
+        string = _commaString(numString)
         
-        string = NSString(format: "%0.\(DECIMAL_PRECISION)f", num) // NOTE: `%f` will never print exponent
-        
-        // split by `.Point`
-        let splittedStrings = string.componentsSeparatedByString(Calculator.Key.Point.rawValue)
-        if let integerString = splittedStrings.first as? String {
-            
-            var integerCharacters = Array(integerString)
-            
-            // insert commas
-            for var i = countElements(integerCharacters) - 3; i > 0; i -= 3 {
-                integerCharacters.insert(Character(COMMA_SEPARATOR), atIndex: i)
-            }
-            
-            string = String(integerCharacters)
-            
-            if splittedStrings.count == 2 {
-                // append `.Point` & decimal-part
-                string = string + (Calculator.Key.Point.rawValue as String) + (splittedStrings.last! as String)
-            }
+        if rtrimsSuffixedPointAndZeros {
+            string = _rtrimFloatString(string)
         }
-        
-        var nonNumberCount = 0
-        for char in string as String {
-            if char == Character(COMMA_SEPARATOR) || char == Character(Calculator.Key.Point.rawValue) {
-                nonNumberCount++
-            }
-        }
-        
-        // limit to MAX_DIGIT_FOR_NONEXPONENT considering non-number characters
-        if string.length > MAX_DIGIT_FOR_NONEXPONENT + nonNumberCount {
-            string = string.substringToIndex(MAX_DIGIT_FOR_NONEXPONENT + nonNumberCount)
-        }
-        
-        string = _rtrimFloatString(string)
     }
     
     return string
 }
 
-/// e.g. `123.000` -> `123`
+/// e.g. "12345.67000" -> "12,345.67000" (used for number with non-exponent only)
+func _commaString(numString: NSString) -> String
+{
+    var string = numString
+    
+    // split by `.Point`
+    let splittedStrings = string.componentsSeparatedByString(Calculator.Key.Point.rawValue)
+    if let integerString = splittedStrings.first as? String {
+        
+        var integerCharacters = Array(integerString)
+        
+        // insert commas
+        for var i = countElements(integerCharacters) - 3; i > 0; i -= 3 {
+            integerCharacters.insert(Character(COMMA_SEPARATOR), atIndex: i)
+        }
+        
+        string = String(integerCharacters)
+        
+        if splittedStrings.count == 2 {
+            // append `.Point` & decimal-part
+            string = string + (Calculator.Key.Point.rawValue as String) + (splittedStrings.last! as String)
+        }
+    }
+    
+    var nonNumberCount = 0
+    for char in string as String {
+        if char == Character(COMMA_SEPARATOR) || char == Character(Calculator.Key.Point.rawValue) {
+            nonNumberCount++
+        }
+    }
+    
+    // limit to MAX_DIGIT_FOR_NONEXPONENT considering non-number characters
+    if string.length > MAX_DIGIT_FOR_NONEXPONENT + nonNumberCount {
+        string = string.substringToIndex(MAX_DIGIT_FOR_NONEXPONENT + nonNumberCount)
+    }
+    
+    return string
+}
+
+/// e.g. "123.000" -> "123"
 func _rtrimFloatString(var string: NSString) -> String
 {
     // trim floating zeros, e.g. `123.000` -> `123.`
@@ -638,7 +658,8 @@ extension Double
 {
     var calculatorString: String
     {
-        return _calculatorString(self)
+        let numString = NSString(format: "%0.\(DECIMAL_PRECISION)f", self) // NOTE: `%f` will never print exponent
+        return _calculatorString(numString, rtrims: true)
     }
 }
 
