@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F5C2EB51A98B7E200D2DBD6 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C2EB41A98B7E200D2DBD6 /* Helper.swift */; };
+		1F5C2EB61A98B7E200D2DBD6 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C2EB41A98B7E200D2DBD6 /* Helper.swift */; };
 		1F977EC71A94978B00A7D656 /* ReactKitCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F977EC61A94978B00A7D656 /* ReactKitCalculator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1F97818D1A94982B00A7D656 /* ReactKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9781721A94980400A7D656 /* ReactKit.framework */; };
 		1F9781AC1A94985B00A7D656 /* ReactKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F97816E1A94980400A7D656 /* ReactKit.framework */; };
@@ -159,6 +161,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F5C2EB41A98B7E200D2DBD6 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		1F977EC11A94978B00A7D656 /* ReactKitCalculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactKitCalculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F977EC51A94978B00A7D656 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F977EC61A94978B00A7D656 /* ReactKitCalculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactKitCalculator.h; sourceTree = "<group>"; };
@@ -232,6 +235,7 @@
 			children = (
 				1F977EC61A94978B00A7D656 /* ReactKitCalculator.h */,
 				1F9781C11A949A1B00A7D656 /* Calculator.swift */,
+				1F5C2EB41A98B7E200D2DBD6 /* Helper.swift */,
 				1F977EC41A94978B00A7D656 /* Supporting Files */,
 			);
 			path = ReactKitCalculator;
@@ -646,6 +650,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F9781C31A949A1B00A7D656 /* Calculator.swift in Sources */,
+				1F5C2EB61A98B7E200D2DBD6 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,6 +659,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F9781C21A949A1B00A7D656 /* Calculator.swift in Sources */,
+				1F5C2EB51A98B7E200D2DBD6 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
