@@ -273,11 +273,14 @@ public class Calculator
                         
                         // numKey except `.Point` (NOTE: `case .Point` declared above)
                         case let numKey where contains(Key.numKeys(), numKey):
-                            if acc == Key.Num0.rawValue {
-                                return newKey.rawValue  // e.g. "0" -> "1" will be "1"
+                            if acc == Key.Minus.rawValue + Key.Num0.rawValue {
+                                return Key.Minus.rawValue + newKey.rawValue  // e.g. "-0" then "1" will be "-1"
+                            }
+                            else if acc == Key.Num0.rawValue {
+                                return newKey.rawValue  // e.g. "0" then "1" will be "1"
                             }
                             else {
-                                return (accumulatedString ?? "")  + newKey.rawValue // e.g. "12" -> "3" will be "123"
+                                return (accumulatedString ?? "")  + newKey.rawValue // e.g. "12" then "3" will be "123"
                             }
                         
                         case .PlusMinus:
