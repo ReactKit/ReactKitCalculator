@@ -10,147 +10,19 @@
 		1F5C2EB51A98B7E200D2DBD6 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C2EB41A98B7E200D2DBD6 /* Helper.swift */; };
 		1F5C2EB61A98B7E200D2DBD6 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C2EB41A98B7E200D2DBD6 /* Helper.swift */; };
 		1F977EC71A94978B00A7D656 /* ReactKitCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F977EC61A94978B00A7D656 /* ReactKitCalculator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1F97818D1A94982B00A7D656 /* ReactKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9781721A94980400A7D656 /* ReactKit.framework */; };
-		1F9781AC1A94985B00A7D656 /* ReactKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F97816E1A94980400A7D656 /* ReactKit.framework */; };
 		1F9781B71A9498AD00A7D656 /* ReactKitCalculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9781931A94984600A7D656 /* ReactKitCalculator.framework */; };
-		1F9781BD1A9498C000A7D656 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9781501A94980400A7D656 /* Nimble.framework */; };
-		1F9781BE1A9498CD00A7D656 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F97815E1A94980400A7D656 /* Quick.framework */; };
-		1F9781BF1A9498D100A7D656 /* ReactKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F97816E1A94980400A7D656 /* ReactKit.framework */; };
-		1F9781C01A9498D500A7D656 /* SwiftTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9781861A94980400A7D656 /* SwiftTask.framework */; };
 		1F9781C21A949A1B00A7D656 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9781C11A949A1B00A7D656 /* Calculator.swift */; };
 		1F9781C31A949A1B00A7D656 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9781C11A949A1B00A7D656 /* Calculator.swift */; };
 		1F9781C71A949A3200A7D656 /* _Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9781C41A949A3200A7D656 /* _Peripheral.swift */; };
 		1F9781C81A949A3200A7D656 /* ExpressionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9781C51A949A3200A7D656 /* ExpressionSpec.swift */; };
 		1F9781C91A949A3200A7D656 /* OutputSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9781C61A949A3200A7D656 /* OutputSpec.swift */; };
+		484F9D641AAD380900E1D0DA /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484F9D631AAD380900E1D0DA /* Nimble.framework */; };
+		48B3B3841AAD3888005312D0 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B3B3831AAD3888005312D0 /* Quick.framework */; };
+		48B3B3861AAD39C8005312D0 /* ReactKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B3B3851AAD39C8005312D0 /* ReactKit.framework */; };
+		48B3B3891AAD39E2005312D0 /* ReactKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B3B3851AAD39C8005312D0 /* ReactKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1F97814F1A94980400A7D656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F977F161A94980300A7D656 /* Nimble.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1F1A74291940169200FFFC47;
-			remoteInfo = "Nimble-iOS";
-		};
-		1F9781511A94980400A7D656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F977F161A94980300A7D656 /* Nimble.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1F1A74341940169200FFFC47;
-			remoteInfo = "Nimble-iOSTests";
-		};
-		1F9781531A94980400A7D656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F977F161A94980300A7D656 /* Nimble.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1F925EAD195C0D6300ED456B;
-			remoteInfo = "Nimble-OSX";
-		};
-		1F9781551A94980400A7D656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F977F161A94980300A7D656 /* Nimble.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1F925EB7195C0D6300ED456B;
-			remoteInfo = "Nimble-OSXTests";
-		};
-		1F97815D1A94980400A7D656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F977FCF1A94980300A7D656 /* Quick.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DAEB6B8E1943873100289F44;
-			remoteInfo = "Quick-OSX";
-		};
-		1F97815F1A94980400A7D656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F977FCF1A94980300A7D656 /* Quick.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DAEB6B991943873100289F44;
-			remoteInfo = "Quick-OSXTests";
-		};
-		1F9781611A94980400A7D656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F977FCF1A94980300A7D656 /* Quick.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DA5663E81A4C8D8500193C88;
-			remoteInfo = "QuickFocused-OSXTests";
-		};
-		1F9781631A94980400A7D656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F977FCF1A94980300A7D656 /* Quick.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5A5D117C19473F2100F6D13D;
-			remoteInfo = "Quick-iOS";
-		};
-		1F9781651A94980400A7D656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F977FCF1A94980300A7D656 /* Quick.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5A5D118619473F2100F6D13D;
-			remoteInfo = "Quick-iOSTests";
-		};
-		1F9781671A94980400A7D656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F977FCF1A94980300A7D656 /* Quick.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DA9876B21A4C70EB0004AA17;
-			remoteInfo = "QuickFocused-iOSTests";
-		};
-		1F97816D1A94980400A7D656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F97809B1A94980400A7D656 /* ReactKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1FED88F819C1EB120065658B;
-			remoteInfo = "ReactKit-OSX";
-		};
-		1F97816F1A94980400A7D656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F97809B1A94980400A7D656 /* ReactKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1FED890319C1EB120065658B;
-			remoteInfo = "ReactKit-OSXTests";
-		};
-		1F9781711A94980400A7D656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F97809B1A94980400A7D656 /* ReactKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1FED894119C1EB7D0065658B;
-			remoteInfo = "ReactKit-iOS";
-		};
-		1F9781731A94980400A7D656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F97809B1A94980400A7D656 /* ReactKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1FED894B19C1EB7D0065658B;
-			remoteInfo = "ReactKit-iOSTests";
-		};
-		1F9781851A94980400A7D656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F9780FC1A94980400A7D656 /* SwiftTask.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1F46DED4199EDF1000F97868;
-			remoteInfo = "SwiftTask-OSX";
-		};
-		1F9781871A94980400A7D656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F9780FC1A94980400A7D656 /* SwiftTask.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1F46DEDF199EDF1000F97868;
-			remoteInfo = "SwiftTask-OSXTests";
-		};
-		1F9781891A94980400A7D656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F9780FC1A94980400A7D656 /* SwiftTask.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 48CD5A0C19AEE3570042B9F1;
-			remoteInfo = "SwiftTask-iOS";
-		};
-		1F97818B1A94980400A7D656 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F9780FC1A94980400A7D656 /* SwiftTask.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4822F0D019D00ABF00F5F572;
-			remoteInfo = "SwiftTask-iOSTests";
-		};
 		1F9781B81A9498AD00A7D656 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1F977EB81A94978B00A7D656 /* Project object */;
@@ -165,10 +37,6 @@
 		1F977EC11A94978B00A7D656 /* ReactKitCalculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactKitCalculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F977EC51A94978B00A7D656 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F977EC61A94978B00A7D656 /* ReactKitCalculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactKitCalculator.h; sourceTree = "<group>"; };
-		1F977F161A94980300A7D656 /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Nimble.xcodeproj; sourceTree = "<group>"; };
-		1F977FCF1A94980300A7D656 /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Quick.xcodeproj; sourceTree = "<group>"; };
-		1F97809B1A94980400A7D656 /* ReactKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = ReactKit.xcodeproj; sourceTree = "<group>"; };
-		1F9780FC1A94980400A7D656 /* SwiftTask.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SwiftTask.xcodeproj; sourceTree = "<group>"; };
 		1F9781931A94984600A7D656 /* ReactKitCalculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactKitCalculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9781B11A9498AD00A7D656 /* ReactKitCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactKitCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F9781B41A9498AD00A7D656 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -176,6 +44,9 @@
 		1F9781C41A949A3200A7D656 /* _Peripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Peripheral.swift; sourceTree = "<group>"; };
 		1F9781C51A949A3200A7D656 /* ExpressionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionSpec.swift; sourceTree = "<group>"; };
 		1F9781C61A949A3200A7D656 /* OutputSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputSpec.swift; sourceTree = "<group>"; };
+		484F9D631AAD380900E1D0DA /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../Carthage/Checkouts/Nimble/build/Debug/Nimble.framework; sourceTree = "<group>"; };
+		48B3B3831AAD3888005312D0 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../Carthage/Checkouts/Quick/build/Debug/Quick.framework; sourceTree = "<group>"; };
+		48B3B3851AAD39C8005312D0 /* ReactKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactKit.framework; path = ../Carthage/Checkouts/ReactKit/build/Debug/ReactKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F97818D1A94982B00A7D656 /* ReactKit.framework in Frameworks */,
+				48B3B3891AAD39E2005312D0 /* ReactKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F9781AC1A94985B00A7D656 /* ReactKit.framework in Frameworks */,
+				48B3B3861AAD39C8005312D0 /* ReactKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,10 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F9781C01A9498D500A7D656 /* SwiftTask.framework in Frameworks */,
-				1F9781BF1A9498D100A7D656 /* ReactKit.framework in Frameworks */,
-				1F9781BE1A9498CD00A7D656 /* Quick.framework in Frameworks */,
-				1F9781BD1A9498C000A7D656 /* Nimble.framework in Frameworks */,
+				48B3B3841AAD3888005312D0 /* Quick.framework in Frameworks */,
+				484F9D641AAD380900E1D0DA /* Nimble.framework in Frameworks */,
 				1F9781B71A9498AD00A7D656 /* ReactKitCalculator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,7 +82,6 @@
 		1F977EB71A94978B00A7D656 = {
 			isa = PBXGroup;
 			children = (
-				1F977EDD1A94980300A7D656 /* Checkouts */,
 				1F977EC31A94978B00A7D656 /* ReactKitCalculator */,
 				1F9781B21A9498AD00A7D656 /* ReactKitCalculatorTests */,
 				1F977EC21A94978B00A7D656 /* Products */,
@@ -244,99 +112,10 @@
 		1F977EC41A94978B00A7D656 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				48B3B3851AAD39C8005312D0 /* ReactKit.framework */,
 				1F977EC51A94978B00A7D656 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1F977EDD1A94980300A7D656 /* Checkouts */ = {
-			isa = PBXGroup;
-			children = (
-				1F977EDE1A94980300A7D656 /* Nimble */,
-				1F977F4D1A94980300A7D656 /* Quick */,
-				1F977FFF1A94980300A7D656 /* ReactKit */,
-				1F9780A81A94980400A7D656 /* SwiftTask */,
-			);
-			name = Checkouts;
-			path = Carthage/Checkouts;
-			sourceTree = "<group>";
-		};
-		1F977EDE1A94980300A7D656 /* Nimble */ = {
-			isa = PBXGroup;
-			children = (
-				1F977F161A94980300A7D656 /* Nimble.xcodeproj */,
-			);
-			path = Nimble;
-			sourceTree = "<group>";
-		};
-		1F977F171A94980300A7D656 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1F9781501A94980400A7D656 /* Nimble.framework */,
-				1F9781521A94980400A7D656 /* NimbleTests.xctest */,
-				1F9781541A94980400A7D656 /* Nimble.framework */,
-				1F9781561A94980400A7D656 /* NimbleTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		1F977F4D1A94980300A7D656 /* Quick */ = {
-			isa = PBXGroup;
-			children = (
-				1F977FCF1A94980300A7D656 /* Quick.xcodeproj */,
-			);
-			path = Quick;
-			sourceTree = "<group>";
-		};
-		1F977FD01A94980300A7D656 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1F97815E1A94980400A7D656 /* Quick.framework */,
-				1F9781601A94980400A7D656 /* Quick-OSXTests.xctest */,
-				1F9781621A94980400A7D656 /* QuickFocused-OSXTests.xctest */,
-				1F9781641A94980400A7D656 /* Quick.framework */,
-				1F9781661A94980400A7D656 /* Quick-iOSTests.xctest */,
-				1F9781681A94980400A7D656 /* QuickFocused-iOSTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		1F977FFF1A94980300A7D656 /* ReactKit */ = {
-			isa = PBXGroup;
-			children = (
-				1F97809B1A94980400A7D656 /* ReactKit.xcodeproj */,
-			);
-			path = ReactKit;
-			sourceTree = "<group>";
-		};
-		1F97809C1A94980400A7D656 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1F97816E1A94980400A7D656 /* ReactKit.framework */,
-				1F9781701A94980400A7D656 /* ReactKit-OSXTests.xctest */,
-				1F9781721A94980400A7D656 /* ReactKit.framework */,
-				1F9781741A94980400A7D656 /* ReactKit-iOSTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		1F9780A81A94980400A7D656 /* SwiftTask */ = {
-			isa = PBXGroup;
-			children = (
-				1F9780FC1A94980400A7D656 /* SwiftTask.xcodeproj */,
-			);
-			path = SwiftTask;
-			sourceTree = "<group>";
-		};
-		1F9780FD1A94980400A7D656 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1F9781861A94980400A7D656 /* SwiftTask.framework */,
-				1F9781881A94980400A7D656 /* SwiftTask-OSXTests.xctest */,
-				1F97818A1A94980400A7D656 /* SwiftTask.framework */,
-				1F97818C1A94980400A7D656 /* SwiftTask-iOSTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		1F9781B21A9498AD00A7D656 /* ReactKitCalculatorTests */ = {
@@ -353,6 +132,8 @@
 		1F9781B31A9498AD00A7D656 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				48B3B3831AAD3888005312D0 /* Quick.framework */,
+				484F9D631AAD380900E1D0DA /* Nimble.framework */,
 				1F9781B41A9498AD00A7D656 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -464,24 +245,6 @@
 			mainGroup = 1F977EB71A94978B00A7D656;
 			productRefGroup = 1F977EC21A94978B00A7D656 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 1F977F171A94980300A7D656 /* Products */;
-					ProjectRef = 1F977F161A94980300A7D656 /* Nimble.xcodeproj */;
-				},
-				{
-					ProductGroup = 1F977FD01A94980300A7D656 /* Products */;
-					ProjectRef = 1F977FCF1A94980300A7D656 /* Quick.xcodeproj */;
-				},
-				{
-					ProductGroup = 1F97809C1A94980400A7D656 /* Products */;
-					ProjectRef = 1F97809B1A94980400A7D656 /* ReactKit.xcodeproj */;
-				},
-				{
-					ProductGroup = 1F9780FD1A94980400A7D656 /* Products */;
-					ProjectRef = 1F9780FC1A94980400A7D656 /* SwiftTask.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				1F9781921A94984600A7D656 /* ReactKitCalculator-OSX */,
@@ -490,135 +253,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		1F9781501A94980400A7D656 /* Nimble.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Nimble.framework;
-			remoteRef = 1F97814F1A94980400A7D656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F9781521A94980400A7D656 /* NimbleTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = NimbleTests.xctest;
-			remoteRef = 1F9781511A94980400A7D656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F9781541A94980400A7D656 /* Nimble.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Nimble.framework;
-			remoteRef = 1F9781531A94980400A7D656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F9781561A94980400A7D656 /* NimbleTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = NimbleTests.xctest;
-			remoteRef = 1F9781551A94980400A7D656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F97815E1A94980400A7D656 /* Quick.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Quick.framework;
-			remoteRef = 1F97815D1A94980400A7D656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F9781601A94980400A7D656 /* Quick-OSXTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Quick-OSXTests.xctest";
-			remoteRef = 1F97815F1A94980400A7D656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F9781621A94980400A7D656 /* QuickFocused-OSXTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "QuickFocused-OSXTests.xctest";
-			remoteRef = 1F9781611A94980400A7D656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F9781641A94980400A7D656 /* Quick.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Quick.framework;
-			remoteRef = 1F9781631A94980400A7D656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F9781661A94980400A7D656 /* Quick-iOSTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Quick-iOSTests.xctest";
-			remoteRef = 1F9781651A94980400A7D656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F9781681A94980400A7D656 /* QuickFocused-iOSTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "QuickFocused-iOSTests.xctest";
-			remoteRef = 1F9781671A94980400A7D656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F97816E1A94980400A7D656 /* ReactKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ReactKit.framework;
-			remoteRef = 1F97816D1A94980400A7D656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F9781701A94980400A7D656 /* ReactKit-OSXTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "ReactKit-OSXTests.xctest";
-			remoteRef = 1F97816F1A94980400A7D656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F9781721A94980400A7D656 /* ReactKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ReactKit.framework;
-			remoteRef = 1F9781711A94980400A7D656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F9781741A94980400A7D656 /* ReactKit-iOSTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "ReactKit-iOSTests.xctest";
-			remoteRef = 1F9781731A94980400A7D656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F9781861A94980400A7D656 /* SwiftTask.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftTask.framework;
-			remoteRef = 1F9781851A94980400A7D656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F9781881A94980400A7D656 /* SwiftTask-OSXTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SwiftTask-OSXTests.xctest";
-			remoteRef = 1F9781871A94980400A7D656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F97818A1A94980400A7D656 /* SwiftTask.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftTask.framework;
-			remoteRef = 1F9781891A94980400A7D656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1F97818C1A94980400A7D656 /* SwiftTask-iOSTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SwiftTask-iOSTests.xctest";
-			remoteRef = 1F97818B1A94980400A7D656 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1F977EBF1A94978B00A7D656 /* Resources */ = {

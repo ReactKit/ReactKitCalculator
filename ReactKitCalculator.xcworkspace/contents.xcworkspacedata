@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:Carthage/Checkouts"
+      name = "Checkouts">
+      <Group
+         location = "group:Nimble"
+         name = "Nimble">
+         <FileRef
+            location = "group:Nimble.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Quick"
+         name = "Quick">
+         <FileRef
+            location = "group:Quick.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:ReactKit"
+         name = "ReactKit">
+         <FileRef
+            location = "group:ReactKit.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:SwiftTask"
+         name = "SwiftTask">
+         <FileRef
+            location = "group:SwiftTask.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
+   <FileRef
+      location = "group:ReactKitCalculator.xcodeproj">
+   </FileRef>
+</Workspace>
