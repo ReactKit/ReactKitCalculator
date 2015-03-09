@@ -139,6 +139,29 @@ class OutputSpec: QuickSpec
                     
                 }
                 
+                it("`± 0` should print `-0`") {
+                    
+                    p.input = "±"
+                    expect(p.output!).to(equal("-0"))
+                    
+                    p.input = "0"
+                    expect(p.output!).to(equal("-0"))
+                    
+                }
+                
+                it("`± 0 1` should print `-1`") {
+                    
+                    p.input = "±"
+                    expect(p.output!).to(equal("-0"))
+                    
+                    p.input = "0"
+                    expect(p.output!).to(equal("-0"))
+                    
+                    p.input = "1"
+                    expect(p.output!).to(equal("-1"))
+                    
+                }
+                
                 it("`1 ±` should print `-1`") {
                     
                     p.input = "1"
