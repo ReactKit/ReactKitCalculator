@@ -12,7 +12,7 @@ import ReactKit
 /// mimics iOS's Calculator.app
 public class Calculator
 {
-    public enum Key: NSString
+    public enum Key: String
     {
         case Num0 = "0", Num1 = "1", Num2 = "2", Num3 = "3", Num4 = "4", Num5 = "5", Num6 = "6", Num7 = "7", Num8 = "8", Num9 = "9"
         case Point = "."
@@ -256,15 +256,15 @@ public class Calculator
         /// - [t = 7] "4"
         /// - [t = 8] (none)
         ///
-        let numBuildSignal: Signal<NSString?> =
+        let numBuildSignal: Signal<String?> =
             mergedKeySignal
-                .mapAccumulate(nil) { (accumulatedString, newKey) -> NSString? in
+                .mapAccumulate(nil) { (accumulatedString, newKey) -> String? in
                     
                     let acc = (accumulatedString ?? Key.Num0.rawValue)
                     
                     switch newKey {
                         case .Point:
-                            if acc.containsString(Key.Point.rawValue) {
+                            if acc.rangeOfString(Key.Point.rawValue) != nil {
                                 return acc    // don't add another `.Point` if already exists
                             }
                             else {
@@ -280,7 +280,7 @@ public class Calculator
                                 return newKey.rawValue  // e.g. "0" then "1" will be "1"
                             }
                             else {
-                                return (accumulatedString ?? "")  + newKey.rawValue // e.g. "12" then "3" will be "123"
+                                return (accumulatedString ?? "") + newKey.rawValue // e.g. "12" then "3" will be "123"
                             }
                         
                         case .PlusMinus:
@@ -289,7 +289,7 @@ public class Calculator
                         
                             // string-based toggling of prefixed "-"
                             if acc.hasPrefix(Key.Minus.rawValue) {
-                                return acc.substringFromIndex(1)
+                                return acc.substringFromIndex(advance(acc.startIndex, 1))
                             }
                             else {
                                 return Key.Minus.rawValue + acc
@@ -297,7 +297,7 @@ public class Calculator
                         
                         // NOTE: this unaryKey will not contain `.PlusMinus` as `case .PlusMinus` is declared above
                         case let unaryKey where contains(Key.unaryOperators(), unaryKey):
-                            return newKey.evaluate(acc.doubleValue).calculatorString
+                            return newKey.evaluate((acc as NSString).doubleValue).calculatorString
                         
                         // comment-out: don't send "0" because it will confuse with `Key.Num0` input
 //                        case .Clear:
@@ -314,7 +314,7 @@ public class Calculator
         
         let numTokenSignal: Signal<_Token> =
             numBuildSignal
-                .map { _Token.Number($0!.doubleValue) }
+                .map { _Token.Number(($0! as NSString).doubleValue) }
         
         let operatorKeyTokenSignal: Signal<_Token> =
             mergedKeySignal
@@ -360,7 +360,7 @@ public class Calculator
                                     
                                     case .Clear:
                                         _b.clear()
-                                        _b.addNumber(Key.Num0.rawValue.doubleValue)
+                                        _b.addNumber((Key.Num0.rawValue as NSString).doubleValue)
                                     
                                     case .AllClear:
                                         _b.allClear()
@@ -489,7 +489,12 @@ public class Calculator
         
         self.expressionSignal =
             bufferingTokensSignal
-                .map { tokens in tokens.reduce("") { $0 + ($1.number?.calculatorString ?? $1.operatorKey?.rawValue ?? "") + " " } }
+                .map { (tokens: [_Token]) in
+                    // NOTE: explicitly declare `acc` & `token` type, or Swift compiler will take too much time for compiling
+                    return tokens.reduce("") { (acc: String, token: _Token) -> String in
+                        return acc + (token.number?.calculatorString ?? token.operatorKey?.rawValue ?? "") + " "
+                    }
+                }
                 .peek { println("expressionSignal ---> \($0)") }
     }
     

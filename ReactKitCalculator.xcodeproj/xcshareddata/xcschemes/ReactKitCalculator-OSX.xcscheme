@@ -20,20 +20,6 @@
                ReferencedContainer = "container:ReactKitCalculator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1F97819C1A94984600A7D656"
-               BuildableName = "ReactKitCalculator-OSXTests.xctest"
-               BlueprintName = "ReactKitCalculator-OSXTests"
-               ReferencedContainer = "container:ReactKitCalculator.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -46,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1F97819C1A94984600A7D656"
-               BuildableName = "ReactKitCalculator-OSXTests.xctest"
-               BlueprintName = "ReactKitCalculator-OSXTests"
+               BlueprintIdentifier = "1F9781B01A9498AD00A7D656"
+               BuildableName = "ReactKitCalculatorTests.xctest"
+               BlueprintName = "ReactKitCalculatorTests"
                ReferencedContainer = "container:ReactKitCalculator.xcodeproj">
             </BuildableReference>
          </TestableReference>

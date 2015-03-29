@@ -24,7 +24,7 @@ class ExpressionSpec: QuickSpec
             p = _Peripheral()
             
             calculator = Calculator { mapper in
-                let signal = KVO.signal(p, "input").map { $0 as NSString? } //.asSignal(NSString?)
+                let signal = KVO.signal(p, "input").map { $0 as? NSString } //.asSignal(NSString?)
                 
                 for key in Calculator.Key.allKeys() {
                     mapper[key] = signal.filter { $0 == key.rawValue }.map { _ -> Void in } //.asSignal(Void)
