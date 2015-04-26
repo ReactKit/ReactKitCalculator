@@ -24,30 +24,33 @@ class ExpressionSpec: QuickSpec
             p = _Peripheral()
             
             calculator = Calculator { mapper in
-                let signal = KVO.signal(p, "input").map { $0 as? NSString } //.asSignal(NSString?)
+                let stream = KVO.stream(p, "input")
+                    |> map { $0 as? NSString }  // asStream(NSString?)
                 
                 for key in Calculator.Key.allKeys() {
-                    mapper[key] = signal.filter { $0 == key.rawValue }.map { _ -> Void in } //.asSignal(Void)
+                    mapper[key] = stream
+                        |> filter { $0 == key.rawValue }
+                        |> map { _ -> Void in } // asStream(Void)
                 }
             }
             
             #if true
                 // REACT (debug print)
-                calculator.inputSignal ~> { key in
+                calculator.inputStream ~> { key in
                     println()
                     println("***************************")
                     println("pressed key = `\(key.rawValue)`")
                 }
                 
                 // REACT (debug print)
-                calculator.outputSignal ~> { output in
+                calculator.outputStream ~> { output in
                     let output = output ?? "(nil)";
                     println("output = `\(output)`")
                     println()
                 }
                 
                 // REACT (debug print)
-                calculator.expressionSignal ~> { expression in
+                calculator.expressionStream ~> { expression in
                     let expression = expression ?? "(nil)";
                     println("expression = `\(expression)`")
                     println()
@@ -55,7 +58,7 @@ class ExpressionSpec: QuickSpec
             #endif
             
             // REACT (set after debug print)
-            (p, "expression") <~ calculator.expressionSignal
+            (p, "expression") <~ calculator.expressionStream
         }
         
         describe("accumulate digits") {
@@ -85,7 +88,7 @@ class ExpressionSpec: QuickSpec
                     expect(p.expression!).to(equal("1 "))
                     
                     p.input = "."
-                    expect(p.expression!).to(equal("1 "))   // NOTE: outputSignal sends "1."
+                    expect(p.expression!).to(equal("1 "))   // NOTE: outputStream sends "1."
                     
                     p.input = "2"
                     expect(p.expression!).to(equal("1.2 "))
@@ -98,7 +101,7 @@ class ExpressionSpec: QuickSpec
                 it("`. 2 3` should print `0.23`") {
                     
                     p.input = "."
-                    expect(p.expression).to(equal("0 "))   // NOTE: outputSignal sends "0."
+                    expect(p.expression).to(equal("0 "))   // NOTE: outputStream sends "0."
                     
                     p.input = "2"
                     expect(p.expression!).to(equal("0.2 "))

@@ -97,28 +97,28 @@ public class Calculator
         }
     }
     
-    /// maps `Key` to `Signal<Void>`, then converts to `keySignals: [Signal<Key>]`
+    /// maps `Key` to `Stream<Void>`, then converts to `keyStreams: [Stream<Key>]`
     public class Mapper
     {
-        private var _keyMap: [Key : Signal<Void>] = [:]
+        private var _keyMap: [Key : Stream<Void>] = [:]
         
-        public subscript(key: Key) -> Signal<Void>?
+        public subscript(key: Key) -> Stream<Void>?
         {
             get {
                 return self._keyMap[key]
             }
-            set(newSignal) {
-                self._keyMap[key] = newSignal
+            set(newStream) {
+                self._keyMap[key] = newStream
             }
         }
         
-        internal func keySignals() -> [Signal<Key>]
+        internal func keyStreams() -> [Stream<Key>]
         {
-            var keySignals: [Signal<Key>] = []
-            for (key, signal) in self._keyMap {
-                keySignals.append(signal.map { key })
+            var keyStreams: [Stream<Key>] = []
+            for (key, stream) in self._keyMap {
+                keyStreams.append(stream |> map { key })
             }
-            return keySignals
+            return keyStreams
         }
     }
     
@@ -223,24 +223,24 @@ public class Calculator
         }
     }
     
-    /// a.k.a mergedKeySignal
-    public internal(set) var inputSignal: Signal<Key>!
+    /// a.k.a mergedKeyStream
+    public internal(set) var inputStream: Stream<Key>!
     
     /// retro-calculator (single-lined & narrow display) output
-    public internal(set) var outputSignal: Signal<NSString?>!
+    public internal(set) var outputStream: Stream<NSString?>!
     
-    /// realtime buffering signal
-    public internal(set) var expressionSignal: Signal<NSString?>!
+    /// realtime buffering stream
+    public internal(set) var expressionStream: Stream<NSString?>!
     
     private let mapper = Mapper()
     
     
     public init(initClosure: Mapper -> Void)
     {
-        // pass `self.mapper` to collect keySignals via `initClosure`
+        // pass `self.mapper` to collect keyStreams via `initClosure`
         initClosure(self.mapper)
         
-        let mergedKeySignal = Signal<Key>.merge(self.mapper.keySignals())
+        let mergedKeyStream = self.mapper.keyStreams() |> mergeAll
         
         ///
         /// sends digit-accumulated numString
@@ -256,9 +256,9 @@ public class Calculator
         /// - [t = 7] "4"
         /// - [t = 8] (none)
         ///
-        let numBuildSignal: Signal<String?> =
-            mergedKeySignal
-                .mapAccumulate(nil) { (accumulatedString, newKey) -> String? in
+        let numBuildStream: Stream<String?> =
+            mergedKeyStream
+                |> mapAccumulate(nil) { (accumulatedString, newKey) -> String? in
                     
                     let acc = (accumulatedString ?? Key.Num0.rawValue)
                     
@@ -305,41 +305,41 @@ public class Calculator
                         
                         default:
                             // clear previous accumulatedString
-                            // (NOTE: don't send "" which will cause forthcoming signal-operations to convert to 0.0 via `str.doubleValue`)
+                            // (NOTE: don't send "" which will cause forthcoming stream-operations to convert to 0.0 via `str.doubleValue`)
                             return nil
                     }
                 }
-                .filter { $0 != nil }
-                .peek { println("numBuildSignal ---> \($0)") }
+                |> filter { $0 != nil }
+                |> peek { println("numBuildStream ---> \($0)") }
         
-        let numTokenSignal: Signal<_Token> =
-            numBuildSignal
-                .map { _Token.Number(($0! as NSString).doubleValue) }
+        let numTokenStream: Stream<_Token> =
+            numBuildStream
+                |> map { _Token.Number(($0! as NSString).doubleValue) }
         
-        let operatorKeyTokenSignal: Signal<_Token> =
-            mergedKeySignal
-                .filter { !contains(Key.numBuildKeys(), $0) }
-                .map { _Token.Operator($0, calculatedValue: 0, bracketLevel: 0) }
+        let operatorKeyTokenStream: Stream<_Token> =
+            mergedKeyStream
+                |> filter { !contains(Key.numBuildKeys(), $0) }
+                |> map { _Token.Operator($0, calculatedValue: 0, bracketLevel: 0) }
         
-        /// numTokenSignal + operatorKeyTokenSignal
-        let tokenSignal: Signal<_Token> =
-            numTokenSignal
-                .merge(operatorKeyTokenSignal)
-                .peek { println(); println("tokenSignal ---> \($0)") }
+        /// numTokenStream + operatorKeyTokenStream
+        let tokenStream: Stream<_Token> =
+            numTokenStream
+                |> merge(operatorKeyTokenStream)
+                |> peek { println(); println("tokenStream ---> \($0)") }
         
         ///
-        /// Quite complex signal-operation using `customize()` to encapsulate `buffer`
+        /// Quite complex stream-operation using `customize()` to encapsulate `buffer`
         /// and send its `buffer.tokens`.
         ///
         /// (TODO: break down this mess into smaller fundamental operations)
         ///
-        let bufferingTokensSignal: Signal<[_Token]> =
-            tokenSignal
-                .customize { upstreamSignal, progress, fulfill, reject in
+        let bufferingTokensStream: Stream<[_Token]> =
+            tokenStream
+                |> customize { upstreamStream, progress, fulfill, reject in
                     
                     let _b = _Buffer()  // buffer
                     
-                    upstreamSignal.progress { (_, newToken: _Token) in
+                    upstreamStream.progress { (_, newToken: _Token) in
                         
                         println("[progress] newToken = \(newToken)")
                         println("[progress] buffer = \(_b)")
@@ -351,7 +351,7 @@ public class Calculator
                             case .Number(let newValue):
                                 _b.addNumber(newValue)
                                 
-                                // send signal value
+                                // send stream value
                                 progress(_b.tokens)
                             
                             case .Operator(let newOperatorKey, _, _):
@@ -456,7 +456,7 @@ public class Calculator
                                     
                                 }   // switch newOperatorKey
                                 
-                                // send signal value
+                                // send stream value
                                 progress(_b.tokens)
                                 
                                 if newOperatorKey == .Equal {
@@ -472,30 +472,30 @@ public class Calculator
                         }   // switch newToken
                     }
                 }
-                .peek { println("bufferingTokensSignal ---> \($0)") }
+                |> peek { println("bufferingTokensStream ---> \($0)") }
         
-        let precalculatingSignal: Signal<NSString?> =
-            bufferingTokensSignal
-                .map { ($0.last?.operatorCalculatedValue ?? 0).calculatorString }
-                .peek { println("precalculatingSignal ---> \($0)") }
+        let precalculatingStream: Stream<NSString?> =
+            bufferingTokensStream
+                |> map { ($0.last?.operatorCalculatedValue ?? 0).calculatorString }
+                |> peek { println("precalculatingStream ---> \($0)") }
         
-        self.inputSignal = mergedKeySignal
+        self.inputStream = mergedKeyStream
         
-        self.outputSignal =
-            numBuildSignal
-                .map { _calculatorString(raw: $0!, rtrims: false) }   // output `calculatorString` to show commas & exponent, and also suffixed `.Point`+`.Num0`s if needed
-                .merge(precalculatingSignal)
-                .peek { println("outputSignal ---> \($0)") }
+        self.outputStream =
+            numBuildStream
+                |> map { _calculatorString(raw: $0!, rtrims: false) }   // output `calculatorString` to show commas & exponent, and also suffixed `.Point`+`.Num0`s if needed
+                |> merge(precalculatingStream)
+                |> peek { println("outputStream ---> \($0)") }
         
-        self.expressionSignal =
-            bufferingTokensSignal
-                .map { (tokens: [_Token]) in
+        self.expressionStream =
+            bufferingTokensStream
+                |> map { (tokens: [_Token]) in
                     // NOTE: explicitly declare `acc` & `token` type, or Swift compiler will take too much time for compiling
                     return tokens.reduce("") { (acc: String, token: _Token) -> String in
                         return acc + (token.number?.calculatorString ?? token.operatorKey?.rawValue ?? "") + " "
                     }
                 }
-                .peek { println("expressionSignal ---> \($0)") }
+                |> peek { println("expressionStream ---> \($0)") }
     }
     
     deinit
