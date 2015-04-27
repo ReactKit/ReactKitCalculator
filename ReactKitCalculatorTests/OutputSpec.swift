@@ -24,23 +24,26 @@ class OutputSpec: QuickSpec
             p = _Peripheral()
             
             calculator = Calculator { mapper in
-                let signal = KVO.signal(p, "input").map { $0 as NSString? } //.asSignal(NSString?)
+                let stream = KVO.stream(p, "input")
+                    |> map { $0 as? NSString }  // asStream(NSString?)
                 
                 for key in Calculator.Key.allKeys() {
-                    mapper[key] = signal.filter { $0 == key.rawValue }.map { _ -> Void in } //.asSignal(Void)
+                    mapper[key] = stream
+                        |> filter { $0 == key.rawValue }
+                        |> map { _ -> Void in } // asStream(Void)
                 }
             }
             
             #if true
                 // REACT (debug print)
-                calculator.inputSignal ~> { key in
+                calculator.inputStream ~> { key in
                     println()
                     println("***************************")
                     println("pressed key = `\(key.rawValue)`")
                 }
                 
                 // REACT (debug print)
-                calculator.outputSignal ~> { output in
+                calculator.outputStream ~> { output in
                     let output = output ?? "(nil)";
                     println("output = `\(output)`")
                     println()
@@ -48,7 +51,7 @@ class OutputSpec: QuickSpec
             #endif
             
             // REACT (set after debug print)
-            (p, "output") <~ calculator.outputSignal
+            (p, "output") <~ calculator.outputStream
         }
         
         describe("accumulate number") {
@@ -288,10 +291,10 @@ class OutputSpec: QuickSpec
                 expect(p.output!).to(equal("3"))
                 
                 p.input = "="
-                expect(p.output!).to(beginWith("0.666"))
+                expect(p.output!).to(contain("0.666"))    //.to(beginWith("0.666"))
                 
                 p.input = "="
-                expect(p.output!).to(beginWith("0.222"))
+                expect(p.output!).to(contain("0.222"))    //.to(beginWith("0.222"))
                 
             }
         }

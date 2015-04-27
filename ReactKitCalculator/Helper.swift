@@ -61,11 +61,11 @@ func _scientificNotation(num: Double) -> ScientificNotation
 /// - inf -> "inf"
 /// - NaN -> "nan"
 ///
-func _calculatorString(_ num: Double? = nil, raw numString: NSString? = nil, rtrims rtrimsSuffixedPointAndZeros: Bool = true) -> String
+func _calculatorString(_ num: Double? = nil, raw numString: String? = nil, rtrims rtrimsSuffixedPointAndZeros: Bool = true) -> String
 {
     precondition(num != nil || numString != nil, "Either `num` or `numString` must be non-nil.")
     
-    let num = num ?? numString!.doubleValue
+    let num = num ?? (numString! as NSString).doubleValue
     
     // return "inf" or "nan" if needed
     if !num.isFinite { return "\(num)" }
@@ -75,7 +75,7 @@ func _calculatorString(_ num: Double? = nil, raw numString: NSString? = nil, rtr
     let shouldShowNegativeExponent = (num > -1 && num < 1 && exponent <= -MIN_EXPONENT)
     let shouldShowPositiveExponent = ((num > 1 || num < -1) && exponent >= MIN_EXPONENT)
     
-    var string: NSString
+    var string: String
         
     // add exponent, e.g. 1.2345678e+9
     if shouldShowPositiveExponent || shouldShowNegativeExponent {
@@ -92,8 +92,8 @@ func _calculatorString(_ num: Double? = nil, raw numString: NSString? = nil, rtr
         else {
             string = _rtrimFloatString(significand.calculatorString)
             
-            if string.length > SIGNIFICAND_DIGIT + 1 {  // +1 for `.Point`
-                string = string.substringToIndex(SIGNIFICAND_DIGIT + 1)
+            if count(string) > SIGNIFICAND_DIGIT + 1 {  // +1 for `.Point`
+                string = string.substringToIndex(advance(string.startIndex, SIGNIFICAND_DIGIT + 1))
             }
             
             // append exponent
@@ -110,7 +110,7 @@ func _calculatorString(_ num: Double? = nil, raw numString: NSString? = nil, rtr
     }
     // add commas for integer-part
     else {
-        let numString = numString ?? NSString(format: "%0.\(MIN_EXPONENT)f", num)
+        let numString = numString ?? (NSString(format: "%0.\(MIN_EXPONENT)f", num) as String)
         string = _commaString(numString)
         
         if rtrimsSuffixedPointAndZeros {
@@ -122,17 +122,17 @@ func _calculatorString(_ num: Double? = nil, raw numString: NSString? = nil, rtr
 }
 
 /// e.g. "12345.67000" -> "12,345.67000" (used for number with non-exponent only)
-func _commaString(var string: NSString) -> String
+func _commaString(var string: String) -> String
 {
     // split by `.Point`
     let splittedStrings = string.componentsSeparatedByString(Calculator.Key.Point.rawValue)
-    if let integerString = splittedStrings.first as? String {
+    if let integerString = splittedStrings.first {
         
         var integerCharacters = Array(integerString)
         let isNegative = integerString.hasPrefix(Calculator.Key.Minus.rawValue)
         
         // insert commas
-        for var i = countElements(integerCharacters) - 3; i > (isNegative ? 1 : 0); i -= 3 {
+        for var i = count(integerCharacters) - 3; i > (isNegative ? 1 : 0); i -= 3 {
             integerCharacters.insert(Character(COMMA_SEPARATOR), atIndex: i)
         }
         
@@ -140,38 +140,38 @@ func _commaString(var string: NSString) -> String
         
         if splittedStrings.count == 2 {
             // append `.Point` & decimal-part
-            string = string + (Calculator.Key.Point.rawValue as String) + (splittedStrings.last! as String)
+            string = string + Calculator.Key.Point.rawValue + splittedStrings.last!
         }
     }
     
     var nonNumberCount = 0
-    for char in string as String {
+    for char in string {
         if char == Character(COMMA_SEPARATOR) || char == Character(Calculator.Key.Point.rawValue) {
             nonNumberCount++
         }
     }
     
     // limit to MAX_DIGIT_FOR_NONEXPONENT considering non-number characters
-    if string.length > MAX_DIGIT_FOR_NONEXPONENT + nonNumberCount {
-        string = string.substringToIndex(MAX_DIGIT_FOR_NONEXPONENT + nonNumberCount)
+    if count(string) > MAX_DIGIT_FOR_NONEXPONENT + nonNumberCount {
+        string = string.substringToIndex(advance(string.startIndex, MAX_DIGIT_FOR_NONEXPONENT + nonNumberCount))
     }
     
     return string
 }
 
 /// e.g. "123.000" -> "123"
-func _rtrimFloatString(var string: NSString) -> String
+func _rtrimFloatString(var string: String) -> String
 {
     // trim floating zeros, e.g. `123.000` -> `123.`
-    if string.containsString(Calculator.Key.Point.rawValue) {
+    if string.rangeOfString(Calculator.Key.Point.rawValue) != nil {
         while string.hasSuffix(Calculator.Key.Num0.rawValue) {
-            string = string.substringToIndex(string.length-1)
+            string = string.substringToIndex(advance(string.startIndex, count(string)-1))
         }
     }
     
     // trim suffix `.Point` if needed, e.g. `123.` -> `123`
     if string.hasSuffix(Calculator.Key.Point.rawValue) {
-        string = string.substringToIndex(string.length-1)
+        string = string.substringToIndex(advance(string.startIndex, count(string)-1))
     }
     
     return string

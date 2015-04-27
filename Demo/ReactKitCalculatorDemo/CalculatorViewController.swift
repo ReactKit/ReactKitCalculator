@@ -24,7 +24,7 @@ class CalculatorViewController: UIViewController {
         super.viewDidLoad()
 
         self.setupSubviews()
-        self.setupSignals()
+        self.setupStreams()
     }
     
     func setupSubviews()
@@ -37,7 +37,7 @@ class CalculatorViewController: UIViewController {
         self.historyLabel.text = ""
     }
 
-    func setupSignals()
+    func setupStreams()
     {
         self.calculator = Calculator { mapper in
             
@@ -46,7 +46,7 @@ class CalculatorViewController: UIViewController {
                 ("÷", Calculator.Key.Divide)    // convert "÷" to "/"
             ]
             
-            // map buttonSignal to calculator via `button.title`
+            // map buttonStream to calculator via `button.title`
             for button in self.nonClearButtons {
                 let buttonTitle = button.titleForState(.Normal)
                 let defaultMappedKey = Calculator.Key(rawValue: buttonTitle!)
@@ -54,24 +54,24 @@ class CalculatorViewController: UIViewController {
                 let key = defaultMappedKey ?? (alternativeMappingTuples.filter { $0.0 == buttonTitle }.first?.1) ?? nil
                 
                 if let key = key {
-                    mapper[key] = button.buttonSignal()
+                    mapper[key] = button.buttonStream()
                 }
             }
             
             // manually map `.Clear` & `.AllClear`
             for clearKey in Calculator.Key.clearKeys() {
-                mapper[clearKey] = self.clearButton.buttonSignal { button -> Bool in button?.titleForState(.Normal) == clearKey.rawValue }
-                    .filter { $0 == true }
-                    .map { _ in () as Void }    // .asSignal(Void)
+                mapper[clearKey] = self.clearButton.buttonStream { button -> Bool in button?.titleForState(.Normal) == clearKey.rawValue }
+                    |> filter { $0 == true }
+                    |> map { _ in () as Void }    // asStream(Void)
             }
         }
         
         // REACT
-        (self.textField, "text") <~ self.calculator!.outputSignal
-        (self.historyLabel, "text") <~ self.calculator!.expressionSignal
+        (self.textField, "text") <~ self.calculator!.outputStream
+        (self.historyLabel, "text") <~ self.calculator!.expressionStream
 
         // REACT: toggle C <-> AC
-        self.calculator!.inputSignal ~> { [weak self] key in
+        self.calculator!.inputStream ~> { [weak self] key in
             if contains(Calculator.Key.numKeys(), key) {
                 self?.clearButton?.setTitle("C", forState: .Normal)
                 
