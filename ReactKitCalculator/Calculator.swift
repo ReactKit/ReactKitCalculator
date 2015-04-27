@@ -65,9 +65,8 @@ public class Calculator
             }
         }
         
-        // TODO: remove "b:" label for Swift 1.2
         /// for arithmetic operation
-        public func evaluate(a: Double)(b: Double) -> Double
+        public func evaluate(a: Double)(_ b: Double) -> Double
         {
             switch self {
                 case .Plus:
@@ -335,11 +334,11 @@ public class Calculator
         ///
         let bufferingTokensStream: Stream<[_Token]> =
             tokenStream
-                |> customize { upstreamStream, progress, fulfill, reject in
+                |> customize { upstream, progress, fulfill, reject in
                     
                     let _b = _Buffer()  // buffer
                     
-                    upstreamStream.progress { (_, newToken: _Token) in
+                    upstream.progress { (_, newToken: _Token) in
                         
                         println("[progress] newToken = \(newToken)")
                         println("[progress] buffer = \(_b)")
@@ -429,7 +428,7 @@ public class Calculator
                                                         
                                                         if pastOperatorPrecedence < maxPrecedence {
                                                             let beforeCalculatedValue = calculatedValue
-                                                            calculatedValue = pastOperatorTuple.key.evaluate(calculatedValue)(b: pastOperatorTuple.calculatedValue)
+                                                            calculatedValue = pastOperatorTuple.key.evaluate(calculatedValue)(pastOperatorTuple.calculatedValue)
                                                             println("[precalculate] \(beforeCalculatedValue) -> (\(pastOperatorTuple.key.rawValue), \(pastOperatorTuple.calculatedValue)) -> \(calculatedValue)")
                                                             maxPrecedence = pastOperatorPrecedence
                                                         }
