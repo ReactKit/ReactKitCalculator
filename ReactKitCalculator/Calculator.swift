@@ -338,7 +338,7 @@ public class Calculator
                     
                     let _b = _Buffer()  // buffer
                     
-                    upstream.progress { (_, newToken: _Token) in
+                    upstream.react { (newToken: _Token) in
                         
                         println("[progress] newToken = \(newToken)")
                         println("[progress] buffer = \(_b)")
