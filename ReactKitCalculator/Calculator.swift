@@ -226,10 +226,10 @@ public class Calculator
     public internal(set) var inputStream: Stream<Key>!
     
     /// retro-calculator (single-lined & narrow display) output
-    public internal(set) var outputStream: Stream<NSString?>!
+    public internal(set) var outputStream: Stream<String?>!
     
     /// realtime buffering stream
-    public internal(set) var expressionStream: Stream<NSString?>!
+    public internal(set) var expressionStream: Stream<String?>!
     
     private let mapper = Mapper()
     
@@ -473,7 +473,7 @@ public class Calculator
                 }
                 |> peek { println("bufferingTokensStream ---> \($0)") }
         
-        let precalculatingStream: Stream<NSString?> =
+        let precalculatingStream: Stream<String?> =
             bufferingTokensStream
                 |> map { ($0.last?.operatorCalculatedValue ?? 0).calculatorString }
                 |> peek { println("precalculatingStream ---> \($0)") }

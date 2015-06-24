@@ -10,9 +10,9 @@ import Foundation
 
 class _Peripheral: NSObject
 {
-    // NOTE: can't use `Calculator.Key?` for `dynamic var`, so use NSString + KVO + filter to workaround
-    dynamic var input: NSString?
+    // NOTE: can't use `Calculator.Key?` for `dynamic var`, so use String + KVO + filter to workaround
+    dynamic var input: String?
     
-    dynamic var output: NSString?
-    dynamic var expression: NSString?
+    dynamic var output: String?
+    dynamic var expression: String?
 }

@@ -1,4 +1,4 @@
 github "Quick/Nimble" "v0.4.2"
 github "Quick/Quick" "v0.3.1"
 github "ReactKit/SwiftTask" "3.3.0"
-github "ReactKit/ReactKit" "0.11.1"
+github "ReactKit/ReactKit" "0.11.3"

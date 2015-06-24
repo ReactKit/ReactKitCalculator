@@ -25,7 +25,7 @@ class ExpressionSpec: QuickSpec
             
             calculator = Calculator { mapper in
                 let stream = KVO.stream(p, "input")
-                    |> map { $0 as? NSString }  // asStream(NSString?)
+                    |> map { $0 as? String }  // asStream(String?)
                 
                 for key in Calculator.Key.allKeys() {
                     mapper[key] = stream
