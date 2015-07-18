@@ -122,7 +122,7 @@ public class Calculator
     }
     
     /// TODO: implement `bracketLevel` feature
-    internal enum _Token: Printable, DebugPrintable
+    internal enum _Token: CustomStringConvertible, CustomDebugStringConvertible
     {
         typealias OperatorTuple = (key: Key, calculatedValue: Double, bracketLevel: Int)
         
@@ -181,7 +181,7 @@ public class Calculator
         }
     }
     
-    internal class _Buffer: Printable
+    internal class _Buffer: CustomStringConvertible
     {
         var tokens: [_Token] = []
         var lastAnswer: Double = 0
@@ -203,7 +203,7 @@ public class Calculator
             self.tokens.append(_Token.Number(value))
             
             // update lastArithValue if needed
-            if self.tokens.count > 1 && contains(Key.arithOperatorKeys(), self.lastArithKey) {
+            if self.tokens.count > 1 && Key.arithOperatorKeys().contains(self.lastArithKey) {
                 self.lastArithValue = value
             }
         }
@@ -271,7 +271,7 @@ public class Calculator
                             }
                         
                         // numKey except `.Point` (NOTE: `case .Point` declared above)
-                        case let numKey where contains(Key.numKeys(), numKey):
+                        case let numKey where Key.numKeys().contains(numKey):
                             if acc == Key.Minus.rawValue + Key.Num0.rawValue {
                                 return Key.Minus.rawValue + newKey.rawValue  // e.g. "-0" then "1" will be "-1"
                             }
@@ -295,7 +295,7 @@ public class Calculator
                             }
                         
                         // NOTE: this unaryKey will not contain `.PlusMinus` as `case .PlusMinus` is declared above
-                        case let unaryKey where contains(Key.unaryOperators(), unaryKey):
+                        case let unaryKey where Key.unaryOperators().contains(unaryKey):
                             return newKey.evaluate((acc as NSString).doubleValue).calculatorString
                         
                         // comment-out: don't send "0" because it will confuse with `Key.Num0` input
@@ -309,7 +309,7 @@ public class Calculator
                     }
                 }
                 |> filter { $0 != nil }
-                |> peek { println("numBuildStream ---> \($0)") }
+                |> peek { print("numBuildStream ---> \($0)") }
         
         let numTokenStream: Stream<_Token> =
             numBuildStream
@@ -317,14 +317,14 @@ public class Calculator
         
         let operatorKeyTokenStream: Stream<_Token> =
             mergedKeyStream
-                |> filter { !contains(Key.numBuildKeys(), $0) }
+                |> filter { !Key.numBuildKeys().contains($0) }
                 |> map { _Token.Operator($0, calculatedValue: 0, bracketLevel: 0) }
         
         /// numTokenStream + operatorKeyTokenStream
         let tokenStream: Stream<_Token> =
             numTokenStream
                 |> merge(operatorKeyTokenStream)
-                |> peek { println(); println("tokenStream ---> \($0)") }
+                |> peek { print(); print("tokenStream ---> \($0)") }
         
         ///
         /// Quite complex stream-operation using `customize()` to encapsulate `buffer`
@@ -340,8 +340,8 @@ public class Calculator
                     
                     upstream.react { (newToken: _Token) in
                         
-                        println("[progress] newToken = \(newToken)")
-                        println("[progress] buffer = \(_b)")
+                        print("[progress] newToken = \(newToken)")
+                        print("[progress] buffer = \(_b)")
                         
                         assert(_b.tokens.find { $0.operatorKey != nil && $0.operatorKey! == Key.Equal } == nil, "`buffer.tokens` should not contain `.Equal`.")
                         
@@ -371,7 +371,7 @@ public class Calculator
                                         }
                                         
                                         // use `_b.lastArithKey` & `_b.lastArithValue` e.g. `2 + 3 = 4 =` will print `7`
-                                        if _b.tokens.count == 1 && newOperatorKey == .Equal && contains(Key.arithOperatorKeys(), _b.lastArithKey) {
+                                        if _b.tokens.count == 1 && newOperatorKey == .Equal && Key.arithOperatorKeys().contains(_b.lastArithKey) {
                                             let lastNumber = _b.tokens.last!.number!
                                             _b.tokens.append(_Token.Operator(_b.lastArithKey, calculatedValue: lastNumber, bracketLevel: 0))
                                             _b.tokens.append(_Token.Number(_b.lastArithValue))
@@ -390,7 +390,7 @@ public class Calculator
                                             }
                                         }
                                         
-                                        println("prepared tokens = \(_b.tokens)")
+                                        print("prepared tokens = \(_b.tokens)")
                                         
                                         assert(_b.tokens.last?.number != nil, "`buffer.tokens.last` should have number.")
                                         let lastNumber = _b.tokens.last!.number!
@@ -402,7 +402,7 @@ public class Calculator
                                         let prevOperatorToken = _b.tokens.reverse().find {
                                             $0.operatorKey != nil && $0.operatorBracketLevel == newToken.operatorBracketLevel
                                         }
-                                        println("prevOperatorToken = \(prevOperatorToken)")
+                                        print("prevOperatorToken = \(prevOperatorToken)")
                                         
                                         if let prevOperatorKey = prevOperatorToken?.operatorKey {
                                         
@@ -429,7 +429,7 @@ public class Calculator
                                                         if pastOperatorPrecedence < maxPrecedence {
                                                             let beforeCalculatedValue = calculatedValue
                                                             calculatedValue = pastOperatorTuple.key.evaluate(calculatedValue)(pastOperatorTuple.calculatedValue)
-                                                            println("[precalculate] \(beforeCalculatedValue) -> (\(pastOperatorTuple.key.rawValue), \(pastOperatorTuple.calculatedValue)) -> \(calculatedValue)")
+                                                            print("[precalculate] \(beforeCalculatedValue) -> (\(pastOperatorTuple.key.rawValue), \(pastOperatorTuple.calculatedValue)) -> \(calculatedValue)")
                                                             maxPrecedence = pastOperatorPrecedence
                                                         }
                                                     }
@@ -447,7 +447,7 @@ public class Calculator
                                         }
                                         
                                         // update lastArithKey
-                                        if contains(Key.arithOperatorKeys(), newOperatorKey) {
+                                        if Key.arithOperatorKeys().contains(newOperatorKey) {
                                             _b.lastArithKey = newOperatorKey
                                         }
                                         
@@ -471,12 +471,12 @@ public class Calculator
                         }   // switch newToken
                     }
                 }
-                |> peek { println("bufferingTokensStream ---> \($0)") }
+                |> peek { print("bufferingTokensStream ---> \($0)") }
         
         let precalculatingStream: Stream<String?> =
             bufferingTokensStream
                 |> map { ($0.last?.operatorCalculatedValue ?? 0).calculatorString }
-                |> peek { println("precalculatingStream ---> \($0)") }
+                |> peek { print("precalculatingStream ---> \($0)") }
         
         self.inputStream = mergedKeyStream
         
@@ -484,7 +484,7 @@ public class Calculator
             numBuildStream
                 |> map { _calculatorString(raw: $0!, rtrims: false) }   // output `calculatorString` to show commas & exponent, and also suffixed `.Point`+`.Num0`s if needed
                 |> merge(precalculatingStream)
-                |> peek { println("outputStream ---> \($0)") }
+                |> peek { print("outputStream ---> \($0)") }
         
         self.expressionStream =
             bufferingTokensStream
@@ -494,11 +494,11 @@ public class Calculator
                         return acc + (token.number?.calculatorString ?? token.operatorKey?.rawValue ?? "") + " "
                     }
                 }
-                |> peek { println("expressionStream ---> \($0)") }
+                |> peek { print("expressionStream ---> \($0)") }
     }
     
     deinit
     {
-        println("[deinit] \(self)")
+        print("[deinit] \(self)")
     }
 }

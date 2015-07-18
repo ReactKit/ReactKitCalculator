@@ -37,16 +37,16 @@ class OutputSpec: QuickSpec
             #if true
                 // REACT (debug print)
                 calculator.inputStream ~> { key in
-                    println()
-                    println("***************************")
-                    println("pressed key = `\(key.rawValue)`")
+                    print()
+                    print("***************************")
+                    print("pressed key = `\(key.rawValue)`")
                 }
                 
                 // REACT (debug print)
                 calculator.outputStream ~> { output in
                     let output = output ?? "(nil)";
-                    println("output = `\(output)`")
-                    println()
+                    print("output = `\(output)`")
+                    print()
                 }
             #endif
             

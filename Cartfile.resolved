@@ -1,4 +1,4 @@
-github "Quick/Nimble" "v0.4.2"
-github "Quick/Quick" "v0.3.1"
-github "ReactKit/SwiftTask" "3.3.0"
-github "ReactKit/ReactKit" "0.11.3"
+github "Quick/Nimble" "0adbea1f51e6bb489d81463a164df16d8d36d810"
+github "Quick/Quick" "39db56818cf68f8fefd6c3534362890fa337a326"
+github "ReactKit/SwiftTask" "3c3a4bb0d96a50c513505fcca194403cc8dbee60"
+github "ReactKit/ReactKit" "a9d4d2d067e7047a4cb8448a541a59c24f6a51e1"

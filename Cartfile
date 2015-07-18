@@ -1,1 +1,1 @@
-github "ReactKit/ReactKit" ~> 0.11.3
+github "ReactKit/ReactKit" "swift/2.0"

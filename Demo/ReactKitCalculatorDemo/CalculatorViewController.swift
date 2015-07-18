@@ -72,7 +72,7 @@ class CalculatorViewController: UIViewController {
 
         // REACT: toggle C <-> AC
         self.calculator!.inputStream ~> { [weak self] key in
-            if contains(Calculator.Key.numKeys(), key) {
+            if Calculator.Key.numKeys().contains(key) {
                 self?.clearButton?.setTitle("C", forState: .Normal)
                 
             }
