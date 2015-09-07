@@ -288,7 +288,7 @@ public class Calculator
                         
                             // string-based toggling of prefixed "-"
                             if acc.hasPrefix(Key.Minus.rawValue) {
-                                return acc.substringFromIndex(advance(acc.startIndex, 1))
+                                return acc.substringFromIndex(acc.startIndex.advancedBy(1))
                             }
                             else {
                                 return Key.Minus.rawValue + acc
@@ -324,7 +324,7 @@ public class Calculator
         let tokenStream: Stream<_Token> =
             numTokenStream
                 |> merge(operatorKeyTokenStream)
-                |> peek { print(); print("tokenStream ---> \($0)") }
+                |> peek { print(""); print("tokenStream ---> \($0)") }
         
         ///
         /// Quite complex stream-operation using `customize()` to encapsulate `buffer`

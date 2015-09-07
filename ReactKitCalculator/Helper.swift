@@ -70,7 +70,7 @@ func _calculatorString(num: Double? = nil, raw numString: String? = nil, rtrims 
     // return "inf" or "nan" if needed
     if !num.isFinite { return "\(num)" }
     
-    var (significand, exponent) =  _scientificNotation(num)
+    let (significand, exponent) =  _scientificNotation(num)
     
     let shouldShowNegativeExponent = (num > -1 && num < 1 && exponent <= -MIN_EXPONENT)
     let shouldShowPositiveExponent = ((num > 1 || num < -1) && exponent >= MIN_EXPONENT)
@@ -80,7 +80,7 @@ func _calculatorString(num: Double? = nil, raw numString: String? = nil, rtrims 
     // add exponent, e.g. 1.2345678e+9
     if shouldShowPositiveExponent || shouldShowNegativeExponent {
         
-        print()
+        print("")
         print("*** calculatorString ***")
         print("num = \(num)")
         print("significand = \(significand)")
@@ -93,7 +93,7 @@ func _calculatorString(num: Double? = nil, raw numString: String? = nil, rtrims 
             string = _rtrimFloatString(significand.calculatorString)
             
             if string.characters.count > SIGNIFICAND_DIGIT + 1 {  // +1 for `.Point`
-                string = string.substringToIndex(advance(string.startIndex, SIGNIFICAND_DIGIT + 1))
+                string = string.substringToIndex(string.startIndex.advancedBy(SIGNIFICAND_DIGIT + 1))
             }
             
             // append exponent
@@ -153,7 +153,7 @@ func _commaString(var string: String) -> String
     
     // limit to MAX_DIGIT_FOR_NONEXPONENT considering non-number characters
     if string.characters.count > MAX_DIGIT_FOR_NONEXPONENT + nonNumberCount {
-        string = string.substringToIndex(advance(string.startIndex, MAX_DIGIT_FOR_NONEXPONENT + nonNumberCount))
+        string = string.substringToIndex(string.startIndex.advancedBy(MAX_DIGIT_FOR_NONEXPONENT + nonNumberCount))
     }
     
     return string
@@ -165,13 +165,13 @@ func _rtrimFloatString(var string: String) -> String
     // trim floating zeros, e.g. `123.000` -> `123.`
     if string.rangeOfString(Calculator.Key.Point.rawValue) != nil {
         while string.hasSuffix(Calculator.Key.Num0.rawValue) {
-            string = string.substringToIndex(advance(string.startIndex, string.characters.count-1))
+            string = string.substringToIndex(string.startIndex.advancedBy(string.characters.count-1))
         }
     }
     
     // trim suffix `.Point` if needed, e.g. `123.` -> `123`
     if string.hasSuffix(Calculator.Key.Point.rawValue) {
-        string = string.substringToIndex(advance(string.startIndex, string.characters.count-1))
+        string = string.substringToIndex(string.startIndex.advancedBy(string.characters.count-1))
     }
     
     return string

@@ -37,7 +37,7 @@ class ExpressionSpec: QuickSpec
             #if true
                 // REACT (debug print)
                 calculator.inputStream ~> { key in
-                    print()
+                    print("")
                     print("***************************")
                     print("pressed key = `\(key.rawValue)`")
                 }
@@ -46,14 +46,14 @@ class ExpressionSpec: QuickSpec
                 calculator.outputStream ~> { output in
                     let output = output ?? "(nil)";
                     print("output = `\(output)`")
-                    print()
+                    print("")
                 }
                 
                 // REACT (debug print)
                 calculator.expressionStream ~> { expression in
                     let expression = expression ?? "(nil)";
                     print("expression = `\(expression)`")
-                    print()
+                    print("")
                 }
             #endif
             
